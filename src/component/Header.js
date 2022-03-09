@@ -1,15 +1,16 @@
 import React from 'react'
+import currencyRegion from '../utils/currencyRegion'
 
-function Header() {
+function Header({symbol}) {
   return (
     <div className='flex flex-col p-5 border'>
         <div>
-            <h3>USD - United States Dollars</h3>
+            <h3>{symbol} - {currencyRegion[symbol]}</h3>
         </div>
         <div>
             <div className='flex justify-between'>
-                <h1>USD</h1>
-                <h1>10.000</h1>
+                <h1>{symbol}</h1>
+                <input placeholder='Add number here...'/>
             </div>
         </div>
     </div>

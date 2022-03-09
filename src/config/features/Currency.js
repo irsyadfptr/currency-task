@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_KEY } from "../../utils/ApiKey";
 
 export const loadCurrency = createAsyncThunk(
   "loadPokemon",
-  async() => {
+  async(symbols) => {
+    const setSymbols = symbols.toString()
     const currencyAPI = await axios.get(
-      `http://api.exchangeratesapi.io/v1/latest?access_key=cb97a3a36a33e40525a23d616dd5fa5e&symbols=IDR,USD,GBP,SGD`
-      
+      `http://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}&symbols=${setSymbols}`
     );
     return currencyAPI.data;
   }
@@ -14,12 +15,17 @@ export const loadCurrency = createAsyncThunk(
 
 const initialState = {
     data: {},
+    symbols: ["IDR", "USD", "GBP", "SGD"]
 }
 
 const currencySlice = createSlice({
     name: "currencyData",
     initialState,
-
+    reducers: {
+      addCurrency: (state, action) => {
+        state.symbols.push(action.payload)
+      },
+    },
     extraReducers: {
       [loadCurrency.pending]: () => {
         console.log("Pending");
@@ -34,5 +40,6 @@ const currencySlice = createSlice({
     },
   });
 
+  export const { addCurrency } = currencySlice.actions;
   export const getAllCurrency = (state) => state.currencyData.data;
   export default currencySlice.reducer;
