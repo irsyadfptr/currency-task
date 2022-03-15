@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import AddCard from '../component/AddCard'
 import Card from '../component/Card'
 import Header from '../component/Header'
-import { addCurrency, addTotalId, deleteCurrency, loadCurrency } from '../config/features/Currency'
+import { addCurrency, addInput, addTotalId, deleteCurrency, loadCurrency } from '../config/features/Currency'
 
 function ExchangeCurrencies() {
 
@@ -14,9 +14,11 @@ function ExchangeCurrencies() {
     const totalId = useSelector(state => state.currency.id)
     const base = useSelector(state => state.currency.data.base)
     const rates = useSelector(state => state.currency.data.rates)
-    const id = useSelector(state => state.currency.symbols)
+    const inputan = useSelector(state => state.currency.input)
+
+
     const dispatch = useDispatch()
-    console.log(test)
+    console.log(inputan)
 
     const handleSelect = e => {
       dispatch(addTotalId());
@@ -29,6 +31,10 @@ function ExchangeCurrencies() {
       dispatch(deleteCurrency(symbols[i]));
     }
 
+    function handleChange(e) {
+      dispatch(addInput(e.target.value));
+    }
+
     useEffect(() => {
         dispatch(loadCurrency(symbols));
     }, [dispatch, symbols])
@@ -37,10 +43,10 @@ function ExchangeCurrencies() {
 
   return (
     <div>
-        <Header symbol={base}/>
+        <Header symbol={base} input={handleChange}/>
         {rates && Object.entries(rates).map((rate, index) => (
           <div key={index}>
-            <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)}/>
+            <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputan}/>
           </div>
         ))}
         <AddCard change={handleSelect}/>

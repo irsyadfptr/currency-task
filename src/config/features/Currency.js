@@ -23,7 +23,8 @@ const initialState = {
       { id: 3, symbol: 'GBP' },
       { id: 4, symbol: 'SGD' },
     ],
-    id: 4
+    id: 4,
+    input: 10
 }
 
 const currencySlice = createSlice({
@@ -39,6 +40,9 @@ const currencySlice = createSlice({
       },
       addTotalId: (state) => {
         state.id = state.id + 1;
+      },
+      addInput: (state, action) => {
+        state.input = action.payload
       }
     },
     extraReducers: {
@@ -55,6 +59,6 @@ const currencySlice = createSlice({
     },
   });
 
-  export const { addCurrency, deleteCurrency, addTotalId } = currencySlice.actions;
+  export const { addCurrency, deleteCurrency, addTotalId, addInput } = currencySlice.actions;
   export const getAllCurrency = (state) => state.currencyData.data;
   export default currencySlice.reducer;

@@ -1,7 +1,7 @@
 import React from 'react'
 import currencyRegion from '../utils/currencyRegion'
 
-function Header({symbol}) {
+function Header({symbol, input}) {
   return (
     <div className='flex flex-col p-5 border'>
         <div>
@@ -10,7 +10,7 @@ function Header({symbol}) {
         <div>
             <div className='flex justify-between'>
                 <h1>{symbol}</h1>
-                <input placeholder='Add number here...'/>
+                <input placeholder='Add number here...' onChange={input} defaultValue={10}/>
             </div>
         </div>
     </div>
