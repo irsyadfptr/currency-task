@@ -1,8 +1,8 @@
 import React from 'react'
 import currencyRegion from '../utils/currencyRegion'
 
-function Card({rate, base}) {
-    console.log(rate[1])
+function Card({rate, base, id, click}) {
+    console.log(id)
   return (
     <div className='bg-white p-7'>
         <div className='flex bg-red-200 p-5'>
@@ -15,7 +15,7 @@ function Card({rate, base}) {
                 <h3>1 {base} = {rate[0]} {rate[1]}</h3>
             </div>
             <div className='flex'>
-                <button className='items-center'>Delete</button>
+                <button className='items-center' onClick={click}>Delete</button>
             </div>
         </div>
     </div>
