@@ -1,7 +1,7 @@
 import React from 'react'
 import currencyRegion from '../utils/currencyRegion'
 
-function Card({change, filter}) {
+function Card({change, filter, input, handleInput}) {
 
   const filtered = Object.keys(currencyRegion)
   .filter(key => !filter.includes(key))
@@ -9,19 +9,29 @@ function Card({change, filter}) {
     obj[key] = currencyRegion[key];
     return obj;
   }, {});
-  
-
-  console.log(filtered)
 
   return (
-    <div className='bg-white p-3'>
-        <div className='flex flex-col'>
-            <button>Add more currencies</button>
-            <select onChange={change}>
+    <div className='bg-white p-3 sticky bottom-0'>
+        <div className='flex flex-col px-32'>
+            {/* <button>Add more currencies</button> */}
+            {/* <select onChange={change}>
               {Object.entries(filtered).map((currency, index) => (
                 <option key={index} value={currency[0]}>{currency[1]}</option>
               ))}
-            </select>
+            </select> */}
+
+            <input className='py-4 px-5 border-2 border-black rounded-xl'
+              list="datas"
+              onChange={handleInput}
+              required
+              value={input}
+            />
+            <datalist id="datas" onChange={change}>
+              {Object.entries(filtered).map((currency, index) => (
+                  <option key={index} value={currency[0]}>{currency[1]}</option>
+                ))}
+            </datalist>
+            
         </div>
     </div>
   )

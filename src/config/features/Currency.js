@@ -24,7 +24,8 @@ const initialState = {
       { id: 4, symbol: 'SGD' },
     ],
     id: 4,
-    input: 10
+    input: 10,
+    searchInput: ''
 }
 
 const currencySlice = createSlice({
@@ -43,6 +44,9 @@ const currencySlice = createSlice({
       },
       addInput: (state, action) => {
         state.input = action.payload
+      },
+      searchInput: (state, action) => {
+        state.searchInput = action.payload
       }
     },
     extraReducers: {
@@ -59,6 +63,6 @@ const currencySlice = createSlice({
     },
   });
 
-  export const { addCurrency, deleteCurrency, addTotalId, addInput } = currencySlice.actions;
+  export const { addCurrency, deleteCurrency, addTotalId, addInput, searchInput } = currencySlice.actions;
   export const getAllCurrency = (state) => state.currencyData.data;
   export default currencySlice.reducer;
