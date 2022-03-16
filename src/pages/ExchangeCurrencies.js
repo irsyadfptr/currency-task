@@ -11,6 +11,7 @@ function ExchangeCurrencies() {
 
     const test = useSelector(state => state)
     const symbols = useSelector(state => state.currency.symbols)
+    const arrSymbols = symbols.map(({symbol}) => symbol)
     const totalId = useSelector(state => state.currency.id)
     const base = useSelector(state => state.currency.data.base)
     const rates = useSelector(state => state.currency.data.rates)
@@ -18,7 +19,7 @@ function ExchangeCurrencies() {
 
 
     const dispatch = useDispatch()
-    console.log(inputan)
+    console.log(arrSymbols)
 
     const handleSelect = e => {
       dispatch(addTotalId());
@@ -49,7 +50,7 @@ function ExchangeCurrencies() {
             <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputan}/>
           </div>
         ))}
-        <AddCard change={handleSelect}/>
+        <AddCard change={handleSelect} filter={arrSymbols}/>
     </div>
   )
 }
