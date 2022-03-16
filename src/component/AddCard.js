@@ -14,7 +14,7 @@ function Card({change, filter}) {
   console.log(filtered)
 
   return (
-    <div className='bg-white p-7'>
+    <div className='bg-white p-3'>
         <div className='flex flex-col'>
             <button>Add more currencies</button>
             <select onChange={change}>
