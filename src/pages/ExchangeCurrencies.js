@@ -1,12 +1,12 @@
 import axios from 'axios'
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import AddCard from '../component/AddCard'
 import Card from '../component/Card'
 import Header from '../component/Header'
+import useOutsideClick from '../config/custom/useOutsideClick'
 import { addCurrency, addInput, addTotalId, deleteCurrency, loadCurrency, searchInput } from '../config/features/Currency'
-import currencyRegion from '../utils/currencyRegion'
 
 function ExchangeCurrencies() {
 
@@ -16,8 +16,10 @@ function ExchangeCurrencies() {
     const totalId = useSelector(state => state.currency.id)
     const base = useSelector(state => state.currency.data.base)
     const rates = useSelector(state => state.currency.data.rates)
-    const inputan = useSelector(state => state.currency.input)
+    const inputCurrency = useSelector(state => state.currency.input)
     const inputSearch = useSelector(state => state.currency.searchInput)
+
+    let [toggle, setToggle] = useState(true)
 
     const dispatch = useDispatch()
     const handleSelect = e => {
@@ -46,6 +48,18 @@ function ExchangeCurrencies() {
     //   console.log(e.target.value)
     // }
 
+    const handleToggle = () => { 
+      setToggle(!toggle) 
+    }
+
+    const ref = useRef();
+
+    useOutsideClick(ref, () => {
+      if (toggle === false){
+        setToggle(true)
+      }
+    });
+
     useEffect(() => {
         dispatch(loadCurrency(symbols));
     }, [dispatch, symbols,])
@@ -54,13 +68,15 @@ function ExchangeCurrencies() {
 
   return (
     <div>
-        <Header symbol={base} input={handleChange}/>
+        <Header symbol={base} input={handleChange} nominal={inputCurrency}/>
         {rates && Object.entries(rates).map((rate, index) => (
           <div key={index}>
-            <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputan}/>
+            <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputCurrency}/>
           </div>
         ))}
-        <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch}/>
+        <div ref={ref}>
+          <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
+        </div>
     </div>
   )
 }
