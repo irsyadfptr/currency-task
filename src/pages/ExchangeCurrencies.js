@@ -1,5 +1,4 @@
-import axios from 'axios'
-import React, { useEffect, useReducer, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import AddCard from '../component/AddCard'
@@ -11,7 +10,6 @@ import { addCurrency, addInput, addTotalId, deleteCurrency, loadCurrency, search
 
 function ExchangeCurrencies() {
 
-    const test = useSelector(state => state)
     const symbols = useSelector(state => state.currency.symbols)
     const arrSymbols = symbols.map(({symbol}) => symbol)
     const totalId = useSelector(state => state.currency.id)
@@ -51,7 +49,8 @@ function ExchangeCurrencies() {
     // }
 
     const handleToggle = () => { 
-      setToggle(!toggle) 
+      setToggle(!toggle)
+      dispatch(searchInput(''))
     }
 
     const ref = useRef();

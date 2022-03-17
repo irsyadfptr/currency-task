@@ -3,7 +3,7 @@ import axios from "axios";
 import { API_KEY } from "../../utils/ApiKey";
 
 export const loadCurrency = createAsyncThunk(
-  "loadPokemon",
+  "loadCurrency",
   async(api) => {
     const symbols = api.map(({symbol}) => symbol)
     const setSymbols = symbols.toString()

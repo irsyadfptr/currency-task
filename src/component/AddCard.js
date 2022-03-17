@@ -12,8 +12,8 @@ function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
   
 
   return (
-    <div className='bg-white p-3 sticky bottom-0'>
-        <div className='flex flex-col px-32'>
+    <div className='bg-white p-3 lg:px-36 md:px-32 px-10 sticky bottom-0'>
+        <div className='flex flex-col'>
             {/* <select onChange={change}>
               {Object.entries(filtered).map((currency, index) => (
                 <option key={index} value={currency[0]}>{currency[1]}</option>
