@@ -1,5 +1,5 @@
 import React from 'react'
-import currencyRegion from '../utils/currencyRegion'
+import CurrencyRegion from '../utils/CurrencyRegion'
 import { MdDeleteOutline } from "react-icons/md";
 
 function Card({rate, base, id, click, nominal}) {
@@ -8,7 +8,7 @@ function Card({rate, base, id, click, nominal}) {
         <div className='flex flex-col md:flex-row border border-black rounded-xl'>
             <div className='flex flex-grow flex-col items-center md:flex-row justify-between py-10'>
                 <div className='order-2 md:order-1'>
-                    <h3 className='p-2'>{rate[0]} - {currencyRegion[rate[0]]}</h3>
+                    <h3 className='p-2'>{rate[0]} - {CurrencyRegion[rate[0]]}</h3>
                     <h3 className='p-2'>1 {base} = {rate[0]} {rate[1]}</h3>
                 </div>
                 <div className='flex flex-row items-center px-10 text-2xl order-1 md:order-2'>

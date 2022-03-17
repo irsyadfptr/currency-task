@@ -1,12 +1,12 @@
 import React from 'react'
-import currencyRegion from '../utils/currencyRegion'
+import CurrencyRegion from '../utils/CurrencyRegion'
 
 function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
 
-  const filtered = Object.keys(currencyRegion)
+  const filtered = Object.keys(CurrencyRegion)
   .filter(key => !filter.includes(key))
   .reduce((obj, key) => {
-    obj[key] = currencyRegion[key];
+    obj[key] = CurrencyRegion[key];
     return obj;
   }, {});
   

@@ -1,5 +1,5 @@
 import React from 'react'
-import currencyRegion from '../utils/currencyRegion'
+import CurrencyRegion from '../utils/CurrencyRegion'
 
 
 function Header({symbol, input, nominal}) {
@@ -12,7 +12,7 @@ function Header({symbol, input, nominal}) {
   return (
     <div className='flex flex-col p-3 border sticky top-0 bg-white'>
         <div className='flex justify-center'>
-            <h3 className='text-4xl'>{symbol} - {currencyRegion[symbol]}</h3>
+            <h3 className='text-4xl'>{symbol} - {CurrencyRegion[symbol]}</h3>
         </div>
         <div>
             <div className='flex justify-center py-2 space-x-4 align-center'>
