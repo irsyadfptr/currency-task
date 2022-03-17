@@ -1,4 +1,4 @@
-export const currencyRegion = {
+const currencyRegion = {
     USD: "US dollar",
     JPY: "Japanese yen",
     BGN: "Bulgarian lev",
@@ -33,3 +33,5 @@ export const currencyRegion = {
     ZAR: "South African rand",
     EUR: "Euro"
   };
+
+  export default currencyRegion;
