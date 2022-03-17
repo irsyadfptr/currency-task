@@ -25,7 +25,8 @@ const initialState = {
     ],
     id: 4,
     input: 10,
-    searchInput: ''
+    searchInput: '',
+    loading: true
 }
 
 const currencySlice = createSlice({
@@ -55,7 +56,7 @@ const currencySlice = createSlice({
       },
       [loadCurrency.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
-        return { ...state, data: payload};
+        return { ...state, data: payload, loading: false};
       },
       [loadCurrency.rejected]: () => {
         console.log("Rejected!");

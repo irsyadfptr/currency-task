@@ -3,8 +3,6 @@ import currencyRegion from '../utils/currencyRegion'
 
 
 function Header({symbol, input, nominal}) {
-
-  console.log(nominal)
   // const reg = new RegExp("^[0-9]{0,5}(?:[.][0-9]{0,5})?$")
   // const isValid = reg.test(nominal);
 
@@ -12,7 +10,7 @@ function Header({symbol, input, nominal}) {
   // isValid ? console.log("benar") : console.log("input salah ni")
 
   return (
-    <div className='flex flex-col p-7 border sticky top-0 bg-white'>
+    <div className='flex flex-col p-3 border sticky top-0 bg-white'>
         <div className='flex justify-center'>
             <h3 className='text-4xl'>{symbol} - {currencyRegion[symbol]}</h3>
         </div>

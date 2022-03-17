@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import AddCard from '../component/AddCard'
 import Card from '../component/Card'
 import Header from '../component/Header'
+import Spinner from '../component/Spinner'
 import useOutsideClick from '../config/custom/useOutsideClick'
 import { addCurrency, addInput, addTotalId, deleteCurrency, loadCurrency, searchInput } from '../config/features/Currency'
 
@@ -18,6 +19,7 @@ function ExchangeCurrencies() {
     const rates = useSelector(state => state.currency.data.rates)
     const inputCurrency = useSelector(state => state.currency.input)
     const inputSearch = useSelector(state => state.currency.searchInput)
+    const loading = useSelector(state => state.currency.loading)
 
     let [toggle, setToggle] = useState(true)
 
@@ -68,6 +70,10 @@ function ExchangeCurrencies() {
 
   return (
     <div>
+        {loading ? (
+          <Spinner/>
+      ) : (
+        <>
         <Header symbol={base} input={handleChange} nominal={inputCurrency}/>
         {rates && Object.entries(rates).map((rate, index) => (
           <div key={index}>
@@ -77,6 +83,9 @@ function ExchangeCurrencies() {
         <div ref={ref}>
           <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
         </div>
+        </>
+      )}
+
     </div>
   )
 }

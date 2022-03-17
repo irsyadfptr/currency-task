@@ -1,5 +1,4 @@
-import React, { useRef } from 'react'
-import useOutsideClick from '../config/custom/useOutsideClick';
+import React from 'react'
 import currencyRegion from '../utils/currencyRegion'
 
 function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
