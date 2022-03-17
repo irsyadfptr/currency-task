@@ -5,7 +5,7 @@ import { MdDeleteOutline } from "react-icons/md";
 function Card({rate, base, id, click, nominal}) {
   return (
     <div className='bg-white pt-5 lg:px-36 md:px-32 px-10'>
-        <div className='flex flex-col md:flex-row border border-black rounded-xl'>
+        <div className='flex flex-col md:flex-row border-2 border-black rounded-xl'>
             <div className='flex flex-grow flex-col items-center md:flex-row justify-between py-10'>
                 <div className='order-2 md:order-1'>
                     <h3 className='p-2'>{rate[0]} - {CurrencyRegion[rate[0]]}</h3>
@@ -17,7 +17,7 @@ function Card({rate, base, id, click, nominal}) {
                 </div>
             </div>
 
-            <div className='flex justify-center bg-red-500 rounded-lg p-2'>
+            <div className='flex justify-center bg-red-500 rounded-b-lg md:rounded-r-lg p-2'>
                 <button className='items-center' onClick={click}><MdDeleteOutline className='text-3xl m-1'/></button>
             </div>
         </div>
