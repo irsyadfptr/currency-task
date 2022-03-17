@@ -1,5 +1,4 @@
-/* eslint-disable import/no-anonymous-default-export */
-export default {
+export const currencyRegion = {
     USD: "US dollar",
     JPY: "Japanese yen",
     BGN: "Bulgarian lev",
