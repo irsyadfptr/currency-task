@@ -1,5 +1,6 @@
 import React from 'react'
 import CurrencyRegion from '../utils/CurrencyRegion'
+import './CardInject.scss'
 import { MdDeleteOutline } from "react-icons/md";
 
 function Card({rate, base, id, click, nominal}) {
@@ -12,12 +13,12 @@ function Card({rate, base, id, click, nominal}) {
                     <h3 className='p-2'>1 {base} = {rate[0]} {rate[1]}</h3>
                 </div>
                 <div className='flex flex-row items-center px-10 text-2xl order-1 md:order-2'>
-                    <div className='p-2'><h1>{rate[0]}</h1></div>
-                    <div className='p-2'><h1>{(nominal * rate[1]).toFixed(3)}</h1></div>
+                    <div className='p-2 font-bold'><h1>{rate[0]}</h1></div>
+                    <div className='p-2 font-semibold'><h1>{(nominal * rate[1]).toFixed(3)}</h1></div>
                 </div>
             </div>
 
-            <div className='flex justify-center bg-red-500 rounded-b-lg md:rounded-r-lg p-2'>
+            <div className='flex justify-center bg-red-500 card-border p-2 hover:bg-red-400'>
                 <button className='items-center' onClick={click}><MdDeleteOutline className='text-3xl m-1'/></button>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import CurrencyRegion from '../utils/CurrencyRegion'
 
-function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
+function Card({filter, input, handleInput, toggleValue, toggleButton}) {
 
   const filtered = Object.keys(CurrencyRegion)
   .filter(key => !filter.includes(key))
@@ -20,7 +20,7 @@ function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
               ))}
             </select> */}
             {toggleValue ? 
-            <button className='py-4 px-5 border-2 border-black rounded-xl' onClick={toggleButton}>Add more currencies</button>
+            <button className='py-4 px-5 bg-red-500 font-bold text-xl hover:bg-red-400 border-2 border-black rounded-xl' onClick={toggleButton}>Add more currencies</button>
             : 
             <>
               <input className='py-4 px-5 border-2 border-black rounded-xl'
@@ -30,7 +30,7 @@ function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
                 value={input}
                 placeholder="Add new currency..."
               />
-              <datalist id="datas" onChange={change}>
+              <datalist id="datas">
                 {Object.entries(filtered).map((currency, index) => (
                     <option key={index} value={currency[0]}>{currency[1]}</option>
                   ))}

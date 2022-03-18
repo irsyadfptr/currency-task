@@ -22,10 +22,11 @@ function ExchangeCurrencies() {
     let [toggle, setToggle] = useState(true)
 
     const dispatch = useDispatch()
-    const handleSelect = e => {
-      dispatch(addTotalId());
-      dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
-    }
+    // const handleSelect = e => {
+    //   dispatch(addTotalId());
+    //   dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
+    //   dispatch()
+    // }
 
 
     const handleDeleteClick = (i) => {
@@ -33,11 +34,11 @@ function ExchangeCurrencies() {
       dispatch(deleteCurrency(symbols[i]));
     }
 
-    function handleChange(e) {
+    const handleChange = (e) => {
       dispatch(addInput(e.target.value));
     }
 
-    function handleInput(e) {
+    const handleInput = (e) => {
       dispatch(searchInput(e.target.value));
       dispatch(addTotalId());
       dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
@@ -80,7 +81,7 @@ function ExchangeCurrencies() {
           </div>
         ))}
         <div ref={ref}>
-          <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
+          <AddCard  filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
         </div>
         </>
       )}
