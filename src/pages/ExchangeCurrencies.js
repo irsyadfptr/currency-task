@@ -19,10 +19,9 @@ function ExchangeCurrencies() {
     const inputSearch = useSelector(state => state.currency.searchInput)
     const loading = useSelector(state => state.currency.loading)
 
-    const state = useSelector(state => state)
-
 
     let [toggle, setToggle] = useState(true)
+    const [render, setRender] = useState(true)
 
     const dispatch = useDispatch()
     const handleSelect = e => {
@@ -67,8 +66,9 @@ function ExchangeCurrencies() {
 
 
     useEffect(() => {
-        dispatch(loadCurrency(symbols));
-    }, [dispatch, symbols])
+      dispatch(loadCurrency(symbols));
+      setTimeout(() => (symbols.length === 0) ? setRender(false) : setRender(true), 500);
+    }, [dispatch, symbols, render])
 
 
 
@@ -81,7 +81,7 @@ function ExchangeCurrencies() {
         <Header symbol={base} input={handleChange} nominal={inputCurrency}/>
 
         { 
-          (symbols.length > 0)
+          (render)
             ? <> 
                 {Object.entries(rates).map((rate, index) => (
                   <div key={index}>
