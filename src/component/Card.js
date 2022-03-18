@@ -18,8 +18,8 @@ function Card({rate, base, id, click, nominal}) {
                 </div>
             </div>
 
-            <div className='flex justify-center bg-red-500 card-border p-2 hover:bg-red-400'>
-                <button className='items-center' onClick={click}><MdDeleteOutline className='text-3xl m-1'/></button>
+            <div className='flex justify-center bg-red-500 card-border p-2 hover:bg-red-400' onClick={click}>
+                <button className='items-center'><MdDeleteOutline className='text-3xl m-1'/></button>
             </div>
         </div>
     </div>
