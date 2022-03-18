@@ -8,9 +8,9 @@ function Card({rate, base, id, click, nominal}) {
     <div className='bg-white pt-5 lg:px-36 md:px-32 px-10'>
         <div className='flex flex-col md:flex-row border-2 border-black rounded-xl'>
             <div className='flex flex-grow flex-col items-center md:flex-row justify-between py-10'>
-                <div className='order-2 md:order-1'>
-                    <h3 className='p-2'>{rate[0]} - {CurrencyRegion[rate[0]]}</h3>
-                    <h3 className='p-2'>1 {base} = {rate[0]} {rate[1]}</h3>
+                <div className='order-2 md:order-1 text-center md:text-left m-0 md:ml-5'>
+                    <h3 className='p-2 py-0.5 '>{rate[0]} - {CurrencyRegion[rate[0]]}</h3>
+                    <h3 className='p-2 py-0.5'>1 {base} = {rate[0]} {rate[1]}</h3>
                 </div>
                 <div className='flex flex-row items-center px-10 text-2xl order-1 md:order-2'>
                     <div className='p-2 font-bold'><h1>{rate[0]}</h1></div>
