@@ -20,7 +20,7 @@ function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
               ))}
             </select> */}
             {toggleValue ? 
-            <button className='py-4 px-5 border-2 border-black rounded-xl' onClick={toggleButton}>Add more currencies</button>
+            <button className='py-4 px-5 border-2 border-black rounded-xl bg-red-500 card-border hover:bg-red-400' onClick={toggleButton}>Add more currencies</button>
             : 
             <>
               <input className='py-4 px-5 border-2 border-black rounded-xl'
