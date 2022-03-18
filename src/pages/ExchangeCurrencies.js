@@ -19,19 +19,22 @@ function ExchangeCurrencies() {
     const inputSearch = useSelector(state => state.currency.searchInput)
     const loading = useSelector(state => state.currency.loading)
 
+    const state = useSelector(state => state)
+
+
     let [toggle, setToggle] = useState(true)
 
     const dispatch = useDispatch()
-    // const handleSelect = e => {
-    //   dispatch(addTotalId());
-    //   dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
-    //   dispatch()
-    // }
+    const handleSelect = e => {
+      dispatch(addTotalId());
+      dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
+    }
 
 
     const handleDeleteClick = (i) => {
-      console.log(symbols[i])
       dispatch(deleteCurrency(symbols[i]));
+      console.log(symbols)
+      console.log(rates)
     }
 
     const handleChange = (e) => {
@@ -62,9 +65,10 @@ function ExchangeCurrencies() {
       }
     });
 
+
     useEffect(() => {
         dispatch(loadCurrency(symbols));
-    }, [dispatch, symbols,])
+    }, [dispatch, symbols])
 
 
 
@@ -75,13 +79,22 @@ function ExchangeCurrencies() {
       ) : (
         <>
         <Header symbol={base} input={handleChange} nominal={inputCurrency}/>
-        {rates && Object.entries(rates).map((rate, index) => (
-          <div key={index}>
-            <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputCurrency}/>
-          </div>
-        ))}
+
+        { 
+          (symbols.length > 0)
+            ? <> 
+                {Object.entries(rates).map((rate, index) => (
+                  <div key={index}>
+                    <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputCurrency}/>
+                  </div>
+                ))}
+              </> 
+            : <> </> 
+        }
+
+
         <div ref={ref}>
-          <AddCard  filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
+          <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
         </div>
         </>
       )}
