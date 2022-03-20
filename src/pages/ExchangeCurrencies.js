@@ -45,8 +45,6 @@ function ExchangeCurrencies() {
       dispatch(searchInput(e.target.value));
       dispatch(addTotalId());
       dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
-      console.log(e.target.value)
-      console.log(symbols)
     }
 
     const handleSelect = (e) => {
