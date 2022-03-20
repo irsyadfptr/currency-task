@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { API_KEY } from "../../utils/ApiKey";
+import CurrencyData from "../../utils/CurrencyData";
 
 export const loadCurrency = createAsyncThunk(
   "loadCurrency",
@@ -30,12 +31,16 @@ const initialState = {
     loading: true,
 }
 
+
+
 const currencySlice = createSlice({
     name: "currencyData",
     initialState,
     reducers: {
       addCurrency: (state, action) => {
-        state.symbols.push(action.payload)
+        if(Object.keys(CurrencyData.CurrencyRegion).includes(action.payload.symbol)){
+          state.symbols.push(action.payload)
+        }
       },
       deleteCurrency: (state, action) => {
         const { id } = action.payload;         

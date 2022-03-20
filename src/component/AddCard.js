@@ -30,7 +30,7 @@ function Card({change, filter, input, handleInput, toggleValue, toggleButton}) {
                 value={input}
                 placeholder="Add new currency..."
               />
-              <datalist id="datas" onChange={change}>
+              <datalist id="datas" >
                 {Object.entries(filtered).map((currency, index) => (
                     <option key={index} value={currency[0]}>{currency[1]}</option>
                   ))}
