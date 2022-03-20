@@ -10,12 +10,13 @@ export const loadCurrency = createAsyncThunk(
     const currencyAPI = await axios.get(
       `http://api.exchangeratesapi.io/v1/latest?access_key=${API_KEY}&symbols=${setSymbols}`
     );
-    return currencyAPI.data;
+    return (currencyAPI.data)
   }
 )
 
 const initialState = {
-    data: {},
+    base: '',
+    rates: [],
     // symbols: ["IDR", "USD", "GBP", "SGD"]
     symbols: [
       { id: 1, symbol: 'IDR' },
@@ -26,7 +27,7 @@ const initialState = {
     id: 4,
     input: 10,
     searchInput: '',
-    loading: true
+    loading: true,
 }
 
 const currencySlice = createSlice({
@@ -56,7 +57,11 @@ const currencySlice = createSlice({
       },
       [loadCurrency.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
-        return { ...state, data: payload, loading: false};
+        if(state.symbols.length > 0){
+          return { ...state, base: payload.base, rates: payload.rates, loading: false};
+        } else {
+          return {...state, rates: []}
+        }
       },
       [loadCurrency.rejected]: () => {
         console.log("Rejected!");

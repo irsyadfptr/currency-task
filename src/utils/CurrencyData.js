@@ -34,4 +34,40 @@ const CurrencyRegion = {
     EUR: "Euro"
   };
 
-  export default CurrencyRegion;
+  const CurrencyCountry = {
+    USD: "United States",
+    JPY: "Japan",
+    BGN: "Bulgaria",
+    CZK: "Czechia",
+    DKK: "Denmark",
+    GBP: "United Kingdom",
+    HUF: "Hungrary",
+    PLN: "Poland",
+    RON: "Romania",
+    SEK: "Sweden",
+    CHF: "Switzerland",
+    ISK: "Iceland",
+    NOK: "Norway",
+    HRK: "Croatia",
+    RUB: "Russia",
+    TRY: "Turkey",
+    AUD: "Australia",
+    BRL: "Brazil",
+    CAD: "Canada",
+    CNY: "China",
+    HKD: "Hong Kong",
+    IDR: "Indonesia",
+    ILS: "Israel",
+    INR: "India",
+    KRW: "South Korea",
+    MXN: "Mexico",
+    MYR: "Malaysia",
+    NZD: "New Zealand",
+    PHP: "Philippines",
+    SGD: "Singapore",
+    THB: "Thailand",
+    ZAR: "South Africa",
+    EUR: "Euro"
+  }
+
+  export default {CurrencyRegion, CurrencyCountry};

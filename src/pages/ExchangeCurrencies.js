@@ -10,30 +10,31 @@ import { addCurrency, addInput, addTotalId, deleteCurrency, loadCurrency, search
 
 function ExchangeCurrencies() {
 
-    const symbols = useSelector(state => state.currency.symbols)
+    // const symbols = useSelector(state => state.currency.symbols)
+    // const totalId = useSelector(state => state.currency.id)
+    // const base = useSelector(state => state.currency.base)
+    // const rates = useSelector(state => state.currency.rates)
+    // const inputCurrency = useSelector(state => state.currency.input)
+    // const inputSearch = useSelector(state => state.currency.searchInput)
+    // const loading = useSelector(state => state.currency.loading)
+
+    const [symbols, totalId, base, rates, inputCurrency, inputSearch, loading] = useSelector((state) => [
+      state.currency.symbols,
+      state.currency.id,
+      state.currency.base,
+      state.currency.rates,
+      state.currency.input,
+      state.currency.searchInput,
+      state.currency.loading
+    ])
+
     const arrSymbols = symbols.map(({symbol}) => symbol)
-    const totalId = useSelector(state => state.currency.id)
-    const base = useSelector(state => state.currency.data.base)
-    const rates = useSelector(state => state.currency.data.rates)
-    const inputCurrency = useSelector(state => state.currency.input)
-    const inputSearch = useSelector(state => state.currency.searchInput)
-    const loading = useSelector(state => state.currency.loading)
-
-
     let [toggle, setToggle] = useState(true)
-    const [render, setRender] = useState(true)
 
     const dispatch = useDispatch()
-    const handleSelect = e => {
-      dispatch(addTotalId());
-      dispatch(addCurrency({id: totalId + 1, symbol: e.target.value}));
-    }
-
 
     const handleDeleteClick = (i) => {
       dispatch(deleteCurrency(symbols[i]));
-      console.log(symbols)
-      console.log(rates)
     }
 
     const handleChange = (e) => {
@@ -67,8 +68,7 @@ function ExchangeCurrencies() {
 
     useEffect(() => {
       dispatch(loadCurrency(symbols));
-      setTimeout(() => (symbols.length === 0) ? setRender(false) : setRender(true), 500);
-    }, [dispatch, symbols, render])
+    }, [dispatch, symbols])
 
 
 
@@ -79,22 +79,13 @@ function ExchangeCurrencies() {
       ) : (
         <>
         <Header symbol={base} input={handleChange} nominal={inputCurrency}/>
-
-        { 
-          (render)
-            ? <> 
                 {Object.entries(rates).map((rate, index) => (
                   <div key={index}>
                     <Card id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputCurrency}/>
                   </div>
                 ))}
-              </> 
-            : <> </> 
-        }
-
-
         <div ref={ref}>
-          <AddCard change={handleSelect} filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
+          <AddCard filter={arrSymbols} handleInput={handleInput} input={inputSearch} toggleButton={handleToggle} toggleValue={toggle}/>
         </div>
         </>
       )}
