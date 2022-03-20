@@ -41,7 +41,7 @@ const CurrencyRegion = {
     CZK: "Czechia",
     DKK: "Denmark",
     GBP: "United Kingdom",
-    HUF: "Hungrary",
+    HUF: "Hungary",
     PLN: "Poland",
     RON: "Romania",
     SEK: "Sweden",
@@ -49,7 +49,7 @@ const CurrencyRegion = {
     ISK: "Iceland",
     NOK: "Norway",
     HRK: "Croatia",
-    RUB: "Russia",
+    RUB: "Russian Federation",
     TRY: "Turkey",
     AUD: "Australia",
     BRL: "Brazil",
@@ -59,7 +59,7 @@ const CurrencyRegion = {
     IDR: "Indonesia",
     ILS: "Israel",
     INR: "India",
-    KRW: "South Korea",
+    KRW: "Southe Korea",
     MXN: "Mexico",
     MYR: "Malaysia",
     NZD: "New Zealand",
@@ -67,7 +67,7 @@ const CurrencyRegion = {
     SGD: "Singapore",
     THB: "Thailand",
     ZAR: "South Africa",
-    EUR: "Euro"
+    EUR: "European Union"
   }
 
   export default {CurrencyRegion, CurrencyCountry};
