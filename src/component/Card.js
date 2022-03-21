@@ -11,11 +11,12 @@ function Card({rate, base, id, click, nominal, imageLoad}) {
             <div className='flex flex-grow flex-col items-center md:flex-row justify-between py-10'>
                 <div className='order-1 md:order-1 text-center md:text-left mb-10 md:m-0 md:ml-5'>
                     <div className='flex items-center flex-col md:flex-row'>
-                        <div className="border-2 border-gray-800 rounded-full h-12 w-12">    
-                            <img className='h-full w-full rounded-full' onLoad={imageLoad} src={`https://countryflagsapi.com/png/${CurrencyData.CurrencyCountry[rate[0]]}`} alt={CurrencyData.CurrencyCountry[rate[0]]} />
+                        <div className="border-2 border-gray-800 rounded-full h-12 w-12 mb-5 md:h-20 md:w-20 md:mb-0 md:mr-5">    
+                            <img className='h-full w-full rounded-full object-cover' onLoad={imageLoad} src={`https://countryflagsapi.com/png/${CurrencyData.CurrencyCountry[rate[0]]}`} alt={CurrencyData.CurrencyCountry[rate[0]]} />
                         </div>
                         <div>
-                            <h3 className='p-2 py-0.5 items-center font-semibold text-xl'>{rate[0]} - {CurrencyData.CurrencyRegion[rate[0]]}</h3>
+                            <h3 className='p-2 py-0 items-center font-semibold text-xl'>{rate[0]} - {CurrencyData.CurrencyRegion[rate[0]]}</h3>
+                            <h3 className='p-2 py-0 text-lg text-gray-500'>1 {base} = {rate[0]} {rate[1].toFixed(3)}</h3>
                         </div>
                     </div>
                 </div>
@@ -23,7 +24,6 @@ function Card({rate, base, id, click, nominal, imageLoad}) {
                     <div className='p-2 py-0 font-semibold flex'>
                         <h1>{rate[0]} {(nominal * rate[1]).toFixed(3)}</h1>
                     </div>
-                    <h3 className='p-2 py-0.5 text-lg'>1 {base} = {rate[0]} {rate[1].toFixed(3)}</h3>
                 </div>
             </div>
 
