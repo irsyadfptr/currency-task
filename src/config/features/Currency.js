@@ -29,8 +29,8 @@ const initialState = {
     input: 10,
     searchInput: '',
     loading: true,
+    toggle:true,
 }
-
 
 
 const currencySlice = createSlice({
@@ -54,6 +54,9 @@ const currencySlice = createSlice({
       },
       searchInput: (state, action) => {
         state.searchInput = action.payload
+      },
+      toogling: (state, action) => {
+        state.toggle = action.payload
       }
     },
     extraReducers: {
@@ -63,7 +66,7 @@ const currencySlice = createSlice({
       [loadCurrency.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
         if(state.symbols.length > 0){
-          return { ...state, base: payload.base, rates: payload.rates, loading: false};
+          return { ...state, base: payload.base, rates: payload.rates, loading: false, toggle:true};
         } else {
           return {...state, rates: []}
         }
@@ -74,6 +77,6 @@ const currencySlice = createSlice({
     },
   });
 
-  export const { addCurrency, deleteCurrency, addTotalId, addInput, searchInput } = currencySlice.actions;
+  export const { addCurrency, deleteCurrency, addTotalId, addInput, searchInput, toogling } = currencySlice.actions;
   export const getAllCurrency = (state) => state.currencyData.data;
   export default currencySlice.reducer;

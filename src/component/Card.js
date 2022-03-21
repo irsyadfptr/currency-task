@@ -6,12 +6,12 @@ import CurrencyData from '../utils/CurrencyData';
 function Card({rate, base, id, click, nominal, imageLoad}) {
 
   return (
-    <div className='bg-white pt-5 lg:px-36 md:px-32 px-10'>
-        <div className='flex flex-col md:flex-row border-2 border-black rounded-xl'>
-            <div className='flex flex-grow flex-col items-center md:flex-row justify-between py-10'>
+    <div className='pt-5 lg:px-36 md:px-32 px-10'>
+        <div className='flex flex-col md:flex-row rounded-xl shadow-2xl bg-white'>
+            <div className='flex flex-grow border flex-col items-center md:flex-row justify-between py-10'>
                 <div className='order-1 md:order-1 text-center md:text-left mb-10 md:m-0 md:ml-5'>
                     <div className='flex items-center flex-col md:flex-row'>
-                        <div className="border-2 border-gray-800 rounded-full h-12 w-12 mb-5 md:h-20 md:w-20 md:mb-0 md:mr-5">    
+                        <div className="border border-gray-800 rounded-full h-12 w-12 mb-5 md:h-20 md:w-20 md:mb-0 md:mr-5">    
                             <img className='h-full w-full rounded-full object-cover' onLoad={imageLoad} src={`https://countryflagsapi.com/png/${CurrencyData.CurrencyCountry[rate[0]]}`} alt={CurrencyData.CurrencyCountry[rate[0]]} />
                         </div>
                         <div>
