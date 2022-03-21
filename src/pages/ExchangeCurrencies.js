@@ -84,7 +84,7 @@ function ExchangeCurrencies() {
               <div className='w-full max-w-4xl mx-auto bg-white rounded-xl shadow-xl flex flex-col pt-4'>
                   <HeaderList symbol={base} input={handleChange} nominal={inputCurrency}/>
                   {Object.entries(rates).map((rate, index) => (
-                    <div key={index}>
+                    <div key={index} className='py-8 md:p-0'>
                       <CardList id={index} rate={rate} base={base} click={() => handleDeleteClick(index)} nominal={inputCurrency}/>
                     </div>
                   ))}

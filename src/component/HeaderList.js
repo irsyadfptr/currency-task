@@ -4,7 +4,7 @@ import CurrencyData from '../utils/CurrencyData'
 function HeaderList({symbol, input}) {
   return (
     <>
-        <div className='flex flex-col p-4 justify-between sm:py-4 sm:px-8'>
+        <div className='flex flex-col p-4 justify-between sm:py-4 sm:px-8 sticky top-0 bg-white'>
             <div className='text-center mb-10 md:m-0 text-3xl font-bold'><h1>Euro Converter</h1></div>
             <div className='flex flex-col md:flex-row justify-between items-center'>
                 <h1 className='font-semibold text-xl'>{symbol} - {CurrencyData.CurrencyRegion[symbol]}</h1>
