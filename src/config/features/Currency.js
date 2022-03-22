@@ -66,7 +66,7 @@ const currencySlice = createSlice({
       [loadCurrency.fulfilled]: (state, { payload }) => {
         console.log("Fetched Successfully!");
         if(state.symbols.length > 0){
-          return { ...state, base: payload.base, rates: payload.rates, loading: false, toggle:true};
+          return { ...state, base: payload.base, rates: payload.rates, loading: false, searchInput:''};
         } else {
           return {...state, rates: []}
         }

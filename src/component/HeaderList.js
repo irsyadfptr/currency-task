@@ -10,12 +10,12 @@ function HeaderList({symbol, input}) {
                 <h1 className='font-semibold text-xl'>{symbol} - {CurrencyData.CurrencyRegion[symbol]}</h1>
                 <div className='relative z-0 px-2'>
                     <label 
-                    className='font-mono uppercase font-bold text-[11px]  text-gray-900 dark:text-gray-300
-                    bg-white relative px-1 top-2 left-3 w-auto group-focus-within:text-red-600'>
+                    className='font-mono uppercase font-bold text-[12px] text-gray-900
+                    bg-white relative px-1 top-2 left-3 w-auto'>
                     Currency</label>
                     <input type="number" min={0} onChange={input} defaultValue={10}
-                    className='h-8 text-10  bg-gray-50 border py-55-rem border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
-                    focus:border-blue-500 block w-full p-2.5'/>
+                    className='h-8 text-10 bg-gray-50 border py-55-rem border-gray-300 text-gray-900 text-sm rounded-lg
+                    block w-full p-2.5 focus:border-0'/>
                 </div>
             </div>
         </div>

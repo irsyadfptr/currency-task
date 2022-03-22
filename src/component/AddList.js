@@ -11,7 +11,7 @@ function AddList({change, filter, input, handleInput, toggleValue, toggleButton}
     }, {});
 
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col bg-gray-400 text-white rounded-b-lg'>
         {toggleValue ?
         <button className="p-4 hover:bg-blue-400 hover:text-gray-100 rounded-b-lg font-semibold"
         onClick={toggleButton}>
@@ -19,7 +19,7 @@ function AddList({change, filter, input, handleInput, toggleValue, toggleButton}
         </button>
         :
         <>
-            <input className='m-1 p-3 rounded-b-lg'
+            <input className='m-0.5 p-3.5 rounded-b-lg text-black'
             list="datas"
             onChange={handleInput}
             required
